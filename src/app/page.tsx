@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
 const modules = [
   {
@@ -191,10 +191,33 @@ const lightboxScreens = [
 
 export default function Home() {
   const [activeScreen, setActiveScreen] = useState<number | null>(null);
+  const [formStatus, setFormStatus] = useState("");
 
   const openScreen = (src: string) => {
     const screenIndex = lightboxScreens.findIndex((screen) => screen.src === src);
     if (screenIndex >= 0) setActiveScreen(screenIndex);
+  };
+
+  const handleLeadSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const message = [
+      "Здравствуйте! Хочу узнать подробнее о TeethTech CRM.",
+      `Имя: ${String(data.get("name") ?? "")}`,
+      `Телефон: ${String(data.get("phone") ?? "")}`,
+      `Лаборатория / клиника: ${String(data.get("company") ?? "Не указано")}`,
+      `Комментарий: ${String(data.get("message") ?? "Не указан")}`,
+    ].join("\n");
+
+    window.open(
+      `https://wa.me/77054703104?text=${encodeURIComponent(message)}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
+    setFormStatus("Заявка подготовлена — отправьте сообщение в открывшемся WhatsApp.");
+    form.reset();
   };
 
   useEffect(() => {
@@ -244,9 +267,10 @@ export default function Home() {
             <a href="#modules">Возможности</a>
             <a href="#workflow">Как работает</a>
             <a href="#roles">Для команды</a>
+            <a href="#contact">Контакты</a>
           </nav>
-          <a className="nav-cta" href="#modules">
-            Что внутри
+          <a className="nav-cta" href="#contact">
+            Оставить заявку
             <span aria-hidden="true">↗</span>
           </a>
         </div>
@@ -629,11 +653,109 @@ export default function Home() {
               Соберите заказы, производство, команду и экономику лаборатории в
               одном понятном пространстве.
             </p>
-            <a className="button button-white" href="#modules">
-              Посмотреть модули
-              <span aria-hidden="true">↑</span>
+            <a className="button button-white" href="#contact">
+              Обсудить подключение
+              <span aria-hidden="true">→</span>
             </a>
           </div>
+        </div>
+      </section>
+
+      <section className="contact-section section" id="contact">
+        <div className="container contact-grid">
+          <div className="contact-copy">
+            <span className="section-label">Связаться с TeethTech</span>
+            <h2>Покажем CRM на ваших процессах</h2>
+            <p>
+              Оставьте контакты — обсудим задачи лаборатории, покажем рабочие
+              разделы и ответим на вопросы по подключению.
+            </p>
+
+            <div className="contact-list">
+              <a href="tel:8705144911">
+                <span>01 · Телефон</span>
+                <strong>8705144911</strong>
+                <small>Нажмите, чтобы позвонить</small>
+              </a>
+              <a href="tel:87054703104">
+                <span>02 · Телефон</span>
+                <strong>87054703104</strong>
+                <small>Звонок или сообщение в WhatsApp</small>
+              </a>
+            </div>
+
+            <a
+              className="whatsapp-link"
+              href="https://wa.me/77054703104"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Написать в WhatsApp
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <form className="lead-form" onSubmit={handleLeadSubmit}>
+            <div className="lead-form-heading">
+              <span>Заявка на демонстрацию</span>
+              <strong>Расскажите, как с вами связаться</strong>
+            </div>
+
+            <label>
+              <span>Ваше имя *</span>
+              <input
+                name="name"
+                type="text"
+                autoComplete="name"
+                placeholder="Как к вам обращаться"
+                required
+              />
+            </label>
+
+            <label>
+              <span>Телефон *</span>
+              <input
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                placeholder="+7 ___ ___ __ __"
+                required
+              />
+            </label>
+
+            <label>
+              <span>Лаборатория или клиника</span>
+              <input
+                name="company"
+                type="text"
+                autoComplete="organization"
+                placeholder="Название компании"
+              />
+            </label>
+
+            <label>
+              <span>Что хотите улучшить?</span>
+              <textarea
+                name="message"
+                rows={4}
+                placeholder="Например: контроль заказов, производство, склад или финансы"
+              />
+            </label>
+
+            <button className="lead-submit" type="submit">
+              Отправить заявку в WhatsApp
+              <span aria-hidden="true">→</span>
+            </button>
+
+            <p className="lead-form-note">
+              Нажимая кнопку, вы откроете WhatsApp с готовым сообщением.
+            </p>
+            {formStatus && (
+              <p className="lead-form-status" role="status">
+                {formStatus}
+              </p>
+            )}
+          </form>
         </div>
       </section>
 
@@ -651,7 +773,7 @@ export default function Home() {
           <div className="footer-links">
             <a href="#interface">Интерфейс</a>
             <a href="#modules">Возможности</a>
-            <a href="#workflow">Процесс</a>
+            <a href="#contact">Контакты</a>
           </div>
         </div>
       </footer>

@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const modules = [
   {
@@ -154,7 +157,75 @@ const productScreens = [
   },
 ];
 
+const featuredScreens = [
+  {
+    src: "/screens/crm-dashboard.png",
+    number: "01",
+    title: "Производственный поток",
+    text: "Все этапы и задачи лаборатории на одном экране",
+  },
+  {
+    src: "/screens/crm-analytics.png",
+    number: "02",
+    title: "Аналитика",
+    text: "Нагрузка, сроки, материалы и оплаты",
+  },
+  {
+    src: "/screens/crm-workspace.png",
+    number: "03",
+    title: "Рабочая зона",
+    text: "Личный календарь и задачи по этапам",
+  },
+];
+
+const lightboxScreens = [
+  {
+    src: "/screens/crm-orders.png",
+    number: "00",
+    title: "Реестр заказов",
+    text: "Заказы, статусы, стоимость и производственные показатели",
+  },
+  ...featuredScreens,
+  ...productScreens,
+];
+
 export default function Home() {
+  const [activeScreen, setActiveScreen] = useState<number | null>(null);
+
+  const openScreen = (src: string) => {
+    const screenIndex = lightboxScreens.findIndex((screen) => screen.src === src);
+    if (screenIndex >= 0) setActiveScreen(screenIndex);
+  };
+
+  useEffect(() => {
+    if (activeScreen === null) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setActiveScreen(null);
+      if (event.key === "ArrowLeft") {
+        setActiveScreen((current) =>
+          current === null
+            ? null
+            : (current - 1 + lightboxScreens.length) % lightboxScreens.length,
+        );
+      }
+      if (event.key === "ArrowRight") {
+        setActiveScreen((current) =>
+          current === null ? null : (current + 1) % lightboxScreens.length,
+        );
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeScreen]);
+
   return (
     <main>
       <header className="site-header">
@@ -241,14 +312,22 @@ export default function Home() {
                 <span>TeethTech CRM · Реестр заказов</span>
                 <b>RU</b>
               </div>
-              <Image
-                className="hero-product-shot"
-                src="/screens/crm-orders.png"
-                width={1920}
-                height={900}
-                alt="Рабочий реестр заказов в TeethTech CRM"
-                priority
-              />
+              <button
+                className="screenshot-trigger hero-shot-trigger"
+                type="button"
+                onClick={() => openScreen("/screens/crm-orders.png")}
+                aria-label="Увеличить скриншот реестра заказов"
+              >
+                <Image
+                  className="hero-product-shot"
+                  src="/screens/crm-orders.png"
+                  width={1920}
+                  height={900}
+                  alt="Рабочий реестр заказов в TeethTech CRM"
+                  priority
+                />
+                <span className="zoom-hint" aria-hidden="true">Увеличить ↗</span>
+              </button>
             </div>
             <div className="floating-note floating-note-bottom actual-note">
               <strong>RU · KZ · EN</strong>
@@ -379,12 +458,20 @@ export default function Home() {
 
           <div className="showcase-grid">
             <figure className="showcase-card showcase-card-wide">
-              <Image
-                src="/screens/crm-dashboard.png"
-                width={1920}
-                height={900}
-                alt="Производственный дэшборд TeethTech CRM"
-              />
+              <button
+                className="screenshot-trigger"
+                type="button"
+                onClick={() => openScreen("/screens/crm-dashboard.png")}
+                aria-label="Увеличить производственный дэшборд"
+              >
+                <Image
+                  src="/screens/crm-dashboard.png"
+                  width={1920}
+                  height={900}
+                  alt="Производственный дэшборд TeethTech CRM"
+                />
+                <span className="zoom-hint" aria-hidden="true">Увеличить ↗</span>
+              </button>
               <figcaption>
                 <span>01 · Производственный поток</span>
                 <strong>Все этапы и задачи лаборатории на одном экране</strong>
@@ -393,12 +480,20 @@ export default function Home() {
 
             <div className="showcase-side">
               <figure className="showcase-card">
-                <Image
-                  src="/screens/crm-analytics.png"
-                  width={1920}
-                  height={900}
-                  alt="Аналитика производственной нагрузки TeethTech CRM"
-                />
+                <button
+                  className="screenshot-trigger"
+                  type="button"
+                  onClick={() => openScreen("/screens/crm-analytics.png")}
+                  aria-label="Увеличить экран аналитики"
+                >
+                  <Image
+                    src="/screens/crm-analytics.png"
+                    width={1920}
+                    height={900}
+                    alt="Аналитика производственной нагрузки TeethTech CRM"
+                  />
+                  <span className="zoom-hint" aria-hidden="true">Увеличить ↗</span>
+                </button>
                 <figcaption>
                   <span>02 · Аналитика</span>
                   <strong>Нагрузка, сроки, материалы и оплаты</strong>
@@ -406,12 +501,20 @@ export default function Home() {
               </figure>
 
               <figure className="showcase-card">
-                <Image
-                  src="/screens/crm-workspace.png"
-                  width={1920}
-                  height={913}
-                  alt="Персональная рабочая зона сотрудника TeethTech CRM"
-                />
+                <button
+                  className="screenshot-trigger"
+                  type="button"
+                  onClick={() => openScreen("/screens/crm-workspace.png")}
+                  aria-label="Увеличить экран рабочей зоны"
+                >
+                  <Image
+                    src="/screens/crm-workspace.png"
+                    width={1920}
+                    height={913}
+                    alt="Персональная рабочая зона сотрудника TeethTech CRM"
+                  />
+                  <span className="zoom-hint" aria-hidden="true">Увеличить ↗</span>
+                </button>
                 <figcaption>
                   <span>03 · Рабочая зона</span>
                   <strong>Личный календарь и задачи по этапам</strong>
@@ -427,12 +530,20 @@ export default function Home() {
           <div className="screen-library">
             {productScreens.map((screen) => (
               <figure className="screen-card" key={screen.src}>
-                <Image
-                  src={screen.src}
-                  width={1920}
-                  height={900}
-                  alt={`${screen.title} в TeethTech CRM`}
-                />
+                <button
+                  className="screenshot-trigger"
+                  type="button"
+                  onClick={() => openScreen(screen.src)}
+                  aria-label={`Увеличить экран «${screen.title}»`}
+                >
+                  <Image
+                    src={screen.src}
+                    width={1920}
+                    height={900}
+                    alt={`${screen.title} в TeethTech CRM`}
+                  />
+                  <span className="zoom-hint" aria-hidden="true">Увеличить ↗</span>
+                </button>
                 <figcaption>
                   <span>{screen.number}</span>
                   <div>
@@ -544,6 +655,72 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {activeScreen !== null && (
+        <div
+          className="lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Просмотр экрана «${lightboxScreens[activeScreen].title}»`}
+          onMouseDown={(event) => {
+            if (event.currentTarget === event.target) setActiveScreen(null);
+          }}
+        >
+          <button
+            className="lightbox-close"
+            type="button"
+            onClick={() => setActiveScreen(null)}
+            aria-label="Закрыть увеличенный скриншот"
+          >
+            ×
+          </button>
+
+          <button
+            className="lightbox-arrow lightbox-arrow-left"
+            type="button"
+            onClick={() =>
+              setActiveScreen(
+                (activeScreen - 1 + lightboxScreens.length) %
+                  lightboxScreens.length,
+              )
+            }
+            aria-label="Предыдущий скриншот"
+          >
+            ←
+          </button>
+
+          <div className="lightbox-content">
+            <Image
+              src={lightboxScreens[activeScreen].src}
+              width={1920}
+              height={900}
+              alt={`${lightboxScreens[activeScreen].title} — увеличенный экран TeethTech CRM`}
+              priority
+            />
+            <div className="lightbox-caption">
+              <div>
+                <span>{lightboxScreens[activeScreen].number}</span>
+                <strong>{lightboxScreens[activeScreen].title}</strong>
+              </div>
+              <p>{lightboxScreens[activeScreen].text}</p>
+              <small>
+                {activeScreen + 1} / {lightboxScreens.length}
+              </small>
+            </div>
+          </div>
+
+          <button
+            className="lightbox-arrow lightbox-arrow-right"
+            type="button"
+            onClick={() =>
+              setActiveScreen((activeScreen + 1) % lightboxScreens.length)
+            }
+            aria-label="Следующий скриншот"
+          >
+            →
+          </button>
+        </div>
+      )}
     </main>
   );
 }

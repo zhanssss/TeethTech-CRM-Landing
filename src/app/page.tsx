@@ -85,30 +85,72 @@ const roles = [
   },
 ];
 
-const orderColumns = [
+const productScreens = [
   {
-    title: "Новые",
-    count: "8",
-    items: [
-      { id: "TT-1248", name: "Коронка ZrO₂", meta: "Dental City · 14:30" },
-      { id: "TT-1247", name: "Виниры · 6 ед.", meta: "Nova Dent · завтра" },
-    ],
+    src: "/screens/crm-warehouse.png",
+    number: "04",
+    title: "Склад",
+    text: "Остатки, зона риска и история движений материалов",
   },
   {
-    title: "В работе",
-    count: "14",
-    items: [
-      { id: "TT-1241", name: "Мост · 3 ед.", meta: "CAD/CAM · 72%" },
-      { id: "TT-1239", name: "Протез", meta: "Полимеризация · 54%" },
-    ],
+    src: "/screens/crm-clinics.png",
+    number: "05",
+    title: "Клиники",
+    text: "Реестр партнёров и статистика заказов",
   },
   {
-    title: "Контроль",
-    count: "5",
-    items: [
-      { id: "TT-1234", name: "Коронка E-max", meta: "ОТК · сегодня" },
-      { id: "TT-1228", name: "Имплант", meta: "Финиш · 16:00" },
-    ],
+    src: "/screens/crm-laboratory.png",
+    number: "06",
+    title: "Лаборатория",
+    text: "Команда, справочники и готовность к работе",
+  },
+  {
+    src: "/screens/crm-employees.png",
+    number: "07",
+    title: "Сотрудники",
+    text: "Загрузка, результативность и соблюдение сроков",
+  },
+  {
+    src: "/screens/crm-work-types.png",
+    number: "08",
+    title: "Типы работ",
+    text: "Каталог услуг и производственных маршрутов",
+  },
+  {
+    src: "/screens/crm-process-builder.png",
+    number: "09",
+    title: "Конструктор процессов",
+    text: "Настройка этапов для каждого типа работы",
+  },
+  {
+    src: "/screens/crm-finance-report.png",
+    number: "10",
+    title: "Финансовый отчёт",
+    text: "Выручка, расходы, прибыль и маржинальность",
+  },
+  {
+    src: "/screens/crm-finance-reconciliation.png",
+    number: "11",
+    title: "Сверка бухгалтерии",
+    text: "Автоматический поиск финансовых расхождений",
+  },
+  {
+    src: "/screens/crm-payroll.png",
+    number: "12",
+    title: "Зарплаты",
+    text: "Расчёт по сотрудникам, периодам и зарплатным планам",
+  },
+  {
+    src: "/screens/crm-invoices.png",
+    number: "13",
+    title: "Счета и оплаты",
+    text: "Выставление счетов и контроль задолженности",
+  },
+  {
+    src: "/screens/crm-completed-work-act.png",
+    number: "14",
+    title: "Документы",
+    text: "Акты выполненных работ с экспортом в Excel и PDF",
   },
 ];
 
@@ -127,7 +169,7 @@ export default function Home() {
             />
           </a>
           <nav className="main-nav" aria-label="Основная навигация">
-            <a href="#platform">Платформа</a>
+            <a href="#interface">Интерфейс</a>
             <a href="#modules">Возможности</a>
             <a href="#workflow">Как работает</a>
             <a href="#roles">Для команды</a>
@@ -157,8 +199,8 @@ export default function Home() {
               склад и финансы в одном цифровом контуре.
             </p>
             <div className="hero-actions">
-              <a className="button button-primary" href="#platform">
-                Посмотреть платформу
+              <a className="button button-primary" href="#interface">
+                Посмотреть интерфейс
                 <span aria-hidden="true">→</span>
               </a>
               <a className="button button-secondary" href="#workflow">
@@ -181,98 +223,36 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="product-stage" aria-label="Интерфейс TeethTech CRM">
+          <div
+            className="product-stage product-stage-real"
+            aria-label="Реальный интерфейс TeethTech CRM"
+          >
             <div className="floating-note floating-note-top">
               <span className="status-pulse" />
-              Производство онлайн
+              Реальный интерфейс продукта
             </div>
-            <div className="app-window">
-              <div className="window-bar">
+            <div className="product-screenshot-frame">
+              <div className="product-shot-bar">
                 <div className="window-dots" aria-hidden="true">
                   <i />
                   <i />
                   <i />
                 </div>
-                <div className="window-address">app.teethtech.crm</div>
-                <div className="window-user">AZ</div>
+                <span>TeethTech CRM · Реестр заказов</span>
+                <b>RU</b>
               </div>
-              <div className="app-body">
-                <aside className="app-sidebar" aria-label="Навигация приложения">
-                  <div className="app-mark">T</div>
-                  <div className="side-item active">01</div>
-                  <div className="side-item">02</div>
-                  <div className="side-item">03</div>
-                  <div className="side-item">04</div>
-                  <div className="side-item">05</div>
-                </aside>
-                <div className="app-content">
-                  <div className="app-heading">
-                    <div>
-                      <span className="app-kicker">Главный экран</span>
-                      <h2>Заказы</h2>
-                    </div>
-                    <div className="app-heading-actions">
-                      <span>30 июля</span>
-                      <b>+ Новый заказ</b>
-                    </div>
-                  </div>
-                  <div className="metrics-row">
-                    <div className="metric-card">
-                      <span>В работе</span>
-                      <strong>27</strong>
-                      <small className="positive">+4 сегодня</small>
-                    </div>
-                    <div className="metric-card">
-                      <span>Готово вовремя</span>
-                      <strong>94%</strong>
-                      <small>за 30 дней</small>
-                    </div>
-                    <div className="metric-card metric-chart">
-                      <span>Загрузка</span>
-                      <div className="mini-bars" aria-hidden="true">
-                        <i style={{ height: "35%" }} />
-                        <i style={{ height: "55%" }} />
-                        <i style={{ height: "45%" }} />
-                        <i style={{ height: "76%" }} />
-                        <i style={{ height: "64%" }} />
-                        <i style={{ height: "88%" }} />
-                      </div>
-                      <small>стабильно</small>
-                    </div>
-                  </div>
-                  <div className="kanban">
-                    {orderColumns.map((column, columnIndex) => (
-                      <div className="kanban-column" key={column.title}>
-                        <div className="kanban-title">
-                          <span>{column.title}</span>
-                          <b>{column.count}</b>
-                        </div>
-                        {column.items.map((item, itemIndex) => (
-                          <div className="order-card" key={item.id}>
-                            <div className="order-topline">
-                              <span>{item.id}</span>
-                              <i className={`priority priority-${columnIndex + itemIndex}`} />
-                            </div>
-                            <strong>{item.name}</strong>
-                            <small>{item.meta}</small>
-                            <div className="order-progress">
-                              <i
-                                style={{
-                                  width: `${38 + columnIndex * 24 + itemIndex * 8}%`,
-                                }}
-                              />
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <Image
+                className="hero-product-shot"
+                src="/screens/crm-orders.png"
+                width={1920}
+                height={900}
+                alt="Рабочий реестр заказов в TeethTech CRM"
+                priority
+              />
             </div>
-            <div className="floating-note floating-note-bottom">
-              <strong>94%</strong>
-              <span>заказов в срок</span>
+            <div className="floating-note floating-note-bottom actual-note">
+              <strong>RU · KZ · EN</strong>
+              <span>интерфейс по ролям</span>
             </div>
           </div>
         </div>
@@ -384,6 +364,93 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="interface-showcase section" id="interface">
+        <div className="container">
+          <div className="section-heading split-heading interface-heading">
+            <div>
+              <span className="section-label light-label">Реальные экраны CRM</span>
+              <h2>Не концепт. Интерфейс действующего проекта.</h2>
+            </div>
+            <p>
+              На скриншотах — текущая версия TeethTech CRM: производственный
+              дэшборд, аналитика и персональная зона сотрудника.
+            </p>
+          </div>
+
+          <div className="showcase-grid">
+            <figure className="showcase-card showcase-card-wide">
+              <Image
+                src="/screens/crm-dashboard.png"
+                width={1920}
+                height={900}
+                alt="Производственный дэшборд TeethTech CRM"
+              />
+              <figcaption>
+                <span>01 · Производственный поток</span>
+                <strong>Все этапы и задачи лаборатории на одном экране</strong>
+              </figcaption>
+            </figure>
+
+            <div className="showcase-side">
+              <figure className="showcase-card">
+                <Image
+                  src="/screens/crm-analytics.png"
+                  width={1920}
+                  height={900}
+                  alt="Аналитика производственной нагрузки TeethTech CRM"
+                />
+                <figcaption>
+                  <span>02 · Аналитика</span>
+                  <strong>Нагрузка, сроки, материалы и оплаты</strong>
+                </figcaption>
+              </figure>
+
+              <figure className="showcase-card">
+                <Image
+                  src="/screens/crm-workspace.png"
+                  width={1920}
+                  height={913}
+                  alt="Персональная рабочая зона сотрудника TeethTech CRM"
+                />
+                <figcaption>
+                  <span>03 · Рабочая зона</span>
+                  <strong>Личный календарь и задачи по этапам</strong>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div className="screen-library-heading">
+            <span>Ещё 11 рабочих разделов</span>
+            <p>От склада и справочников до бухгалтерии и документов</p>
+          </div>
+          <div className="screen-library">
+            {productScreens.map((screen) => (
+              <figure className="screen-card" key={screen.src}>
+                <Image
+                  src={screen.src}
+                  width={1920}
+                  height={900}
+                  alt={`${screen.title} в TeethTech CRM`}
+                />
+                <figcaption>
+                  <span>{screen.number}</span>
+                  <div>
+                    <strong>{screen.title}</strong>
+                    <p>{screen.text}</p>
+                  </div>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+
+          <p className="showcase-disclaimer">
+            Данные на экранах демонстрационные и показывают реальные сценарии
+            работы системы.
+          </p>
+        </div>
+      </section>
+
       <section className="workflow section" id="workflow">
         <div className="container workflow-grid">
           <div className="workflow-intro">
@@ -471,7 +538,7 @@ export default function Home() {
           </a>
           <p>Цифровая система для зуботехнической лаборатории.</p>
           <div className="footer-links">
-            <a href="#platform">Платформа</a>
+            <a href="#interface">Интерфейс</a>
             <a href="#modules">Возможности</a>
             <a href="#workflow">Процесс</a>
           </div>

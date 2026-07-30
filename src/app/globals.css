@@ -332,6 +332,63 @@ a {
   perspective: 1200px;
 }
 
+.product-stage-real {
+  padding: 22px 0;
+}
+
+.product-screenshot-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgb(148 163 184 / 0.44);
+  border-radius: 20px;
+  background: #101827;
+  box-shadow:
+    0 42px 85px rgb(15 23 42 / 0.24),
+    0 14px 30px rgb(76 29 149 / 0.14);
+  transform: rotateY(-3deg) rotateX(1.5deg);
+  transform-origin: center;
+}
+
+.product-shot-bar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  min-height: 43px;
+  padding: 0 14px;
+  border-bottom: 1px solid rgb(148 163 184 / 0.18);
+  color: #94a3b8;
+  background: #0f172a;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+
+.product-shot-bar > span {
+  white-space: nowrap;
+}
+
+.product-shot-bar > b {
+  justify-self: end;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  color: #fff;
+  background: #7c3aed;
+  font-size: 8px;
+}
+
+.hero-product-shot {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.actual-note strong {
+  font-size: 13px;
+  letter-spacing: -0.02em;
+}
+
 .app-window {
   position: relative;
   overflow: hidden;
@@ -1120,6 +1177,201 @@ a {
   background: #e11d48;
 }
 
+.interface-showcase {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  background:
+    radial-gradient(circle at 90% 4%, rgb(124 58 237 / 0.22), transparent 30%),
+    #0b1220;
+}
+
+.interface-showcase::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  opacity: 0.2;
+  background-image: radial-gradient(circle, rgb(196 181 253 / 0.5) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, black, transparent 55%);
+}
+
+.interface-showcase .container {
+  position: relative;
+  z-index: 1;
+}
+
+.interface-heading h2 {
+  color: #fff;
+}
+
+.interface-heading p {
+  color: #a9b4c6;
+}
+
+.showcase-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.38fr) minmax(280px, 0.62fr);
+  gap: 18px;
+  margin-top: 68px;
+}
+
+.showcase-side {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.showcase-card {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgb(148 163 184 / 0.22);
+  border-radius: 18px;
+  background: rgb(17 27 52 / 0.82);
+  box-shadow: 0 24px 70px rgb(0 0 0 / 0.26);
+}
+
+.showcase-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid rgb(148 163 184 / 0.18);
+}
+
+.showcase-card:not(.showcase-card-wide) img {
+  aspect-ratio: 16 / 7.2;
+  object-fit: cover;
+  object-position: top;
+}
+
+.showcase-card figcaption {
+  display: grid;
+  gap: 8px;
+  padding: 22px 24px 25px;
+}
+
+.showcase-card figcaption span {
+  color: #a78bfa;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.showcase-card figcaption strong {
+  color: #f8fafc;
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.showcase-card-wide figcaption {
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
+
+.showcase-card-wide figcaption strong {
+  text-align: right;
+}
+
+.screen-library-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 76px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgb(148 163 184 / 0.2);
+}
+
+.screen-library-heading span {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.screen-library-heading p {
+  margin: 0;
+  color: #8995a8;
+  font-size: 13px;
+}
+
+.screen-library {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.screen-card {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgb(148 163 184 / 0.2);
+  border-radius: 16px;
+  background: rgb(17 27 52 / 0.7);
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.screen-card:hover {
+  border-color: rgb(167 139 250 / 0.5);
+  box-shadow: 0 24px 56px rgb(0 0 0 / 0.3);
+  transform: translateY(-4px);
+}
+
+.screen-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 7.6;
+  border-bottom: 1px solid rgb(148 163 184 / 0.16);
+  object-fit: cover;
+  object-position: top;
+}
+
+.screen-card figcaption {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  padding: 18px 19px 20px;
+}
+
+.screen-card figcaption > span {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgb(167 139 250 / 0.34);
+  border-radius: 50%;
+  color: #a78bfa;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.screen-card figcaption strong {
+  display: block;
+  color: #f8fafc;
+  font-size: 15px;
+}
+
+.screen-card figcaption p {
+  margin: 6px 0 0;
+  color: #8f9bad;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.showcase-disclaimer {
+  margin: 18px 0 0;
+  color: #7f8ba0;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
 .workflow {
   position: relative;
   overflow: hidden;
@@ -1410,6 +1662,10 @@ a {
     transform: none;
   }
 
+  .product-screenshot-frame {
+    transform: none;
+  }
+
   .floating-note-top {
     right: 18px;
   }
@@ -1445,6 +1701,19 @@ a {
 
   .module-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .showcase-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase-side {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+  }
+
+  .screen-library {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .role-row {
@@ -1538,9 +1807,18 @@ a {
     transform-origin: top left;
   }
 
-  .product-stage {
+  .product-stage:not(.product-stage-real) {
     height: 385px;
     overflow: visible;
+  }
+
+  .product-stage-real {
+    padding: 12px 0 22px;
+  }
+
+  .product-shot-bar {
+    min-height: 36px;
+    font-size: 7px;
   }
 
   .floating-note-top {
@@ -1560,6 +1838,33 @@ a {
 
   .section {
     padding: 72px 0;
+  }
+
+  .showcase-grid {
+    margin-top: 46px;
+  }
+
+  .showcase-side {
+    grid-template-columns: 1fr;
+  }
+
+  .screen-library-heading {
+    display: grid;
+    gap: 8px;
+    margin-top: 54px;
+  }
+
+  .screen-library {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase-card-wide figcaption {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .showcase-card-wide figcaption strong {
+    text-align: left;
   }
 
   .section-heading h2,

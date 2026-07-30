@@ -8,6 +8,11 @@ const description =
 export const metadata: Metadata = {
   title,
   description,
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   keywords: [
     "CRM для зуботехнической лаборатории",
     "управление зуботехнической лабораторией",

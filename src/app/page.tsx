@@ -672,15 +672,23 @@ export default function Home() {
             </p>
 
             <div className="contact-list">
-              <a href="tel:87051449111">
+              <a
+                href="https://wa.me/77051449111"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <span>01 · Телефон</span>
                 <strong>87051449111</strong>
-                <small>Нажмите, чтобы позвонить</small>
+                <small>Открыть чат в WhatsApp</small>
               </a>
-              <a href="tel:87054703104">
+              <a
+                href="https://wa.me/77054703104"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <span>02 · Телефон</span>
                 <strong>87054703104</strong>
-                <small>Звонок или сообщение в WhatsApp</small>
+                <small>Открыть чат в WhatsApp</small>
               </a>
             </div>
 

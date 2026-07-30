@@ -672,9 +672,9 @@ export default function Home() {
             </p>
 
             <div className="contact-list">
-              <a href="tel:8705144911">
+              <a href="tel:87051449111">
                 <span>01 · Телефон</span>
-                <strong>8705144911</strong>
+                <strong>87051449111</strong>
                 <small>Нажмите, чтобы позвонить</small>
               </a>
               <a href="tel:87054703104">

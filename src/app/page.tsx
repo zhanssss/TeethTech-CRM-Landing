@@ -670,37 +670,6 @@ export default function Home() {
               Оставьте контакты — обсудим задачи лаборатории, покажем рабочие
               разделы и ответим на вопросы по подключению.
             </p>
-
-            <div className="contact-list">
-              <a
-                href="https://wa.me/77051449111"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span>01 · Телефон</span>
-                <strong>87051449111</strong>
-                <small>Открыть чат в WhatsApp</small>
-              </a>
-              <a
-                href="https://wa.me/77054703104"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span>02 · Телефон</span>
-                <strong>87054703104</strong>
-                <small>Открыть чат в WhatsApp</small>
-              </a>
-            </div>
-
-            <a
-              className="whatsapp-link"
-              href="https://wa.me/77054703104"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Написать в WhatsApp
-              <span aria-hidden="true">↗</span>
-            </a>
           </div>
 
           <form className="lead-form" onSubmit={handleLeadSubmit}>

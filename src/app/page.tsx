@@ -267,6 +267,7 @@ export default function Home() {
             <a href="#modules">Возможности</a>
             <a href="#workflow">Как работает</a>
             <a href="#roles">Для команды</a>
+            <a href="#pricing">Стоимость</a>
             <a href="#contact">Контакты</a>
           </nav>
           <a className="nav-cta" href="#contact">
@@ -658,6 +659,42 @@ export default function Home() {
               <span aria-hidden="true">→</span>
             </a>
           </div>
+        </div>
+      </section>
+
+      <section className="pricing-section section" id="pricing">
+        <div className="container pricing-layout">
+          <div className="pricing-copy">
+            <span className="section-label">Условия подключения</span>
+            <h2>Специальная цена для первых тестировщиков</h2>
+            <p>
+              Ищем лаборатории, готовые протестировать TeethTech CRM в реальных
+              процессах и поделиться обратной связью.
+            </p>
+            <div className="pricing-standard">
+              <span>Стандартная стоимость</span>
+              <strong>200 000 ₸</strong>
+            </div>
+          </div>
+
+          <article className="pricing-card">
+            <span className="pricing-badge">Набор тестировщиков</span>
+            <p className="pricing-card-label">TeethTech CRM</p>
+            <div className="pricing-price">
+              <s>200 000 ₸</s>
+              <strong>100 000 ₸</strong>
+            </div>
+            <p className="pricing-period">Стоимость для тестировщиков на 1 год</p>
+            <ul className="pricing-features">
+              <li>Полный доступ к CRM</li>
+              <li>Заказы, производство, склад и финансы</li>
+              <li>Влияние на развитие продукта</li>
+            </ul>
+            <a className="button button-primary pricing-button" href="#contact">
+              Стать тестировщиком
+              <span aria-hidden="true">→</span>
+            </a>
+          </article>
         </div>
       </section>
 

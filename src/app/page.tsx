@@ -679,12 +679,14 @@ export default function Home() {
 
           <article className="pricing-card">
             <span className="pricing-badge">Набор тестировщиков</span>
-            <p className="pricing-card-label">TeethTech CRM</p>
+            <p className="pricing-card-label">Период тестирования</p>
             <div className="pricing-price">
-              <s>200 000 ₸</s>
-              <strong>100 000 ₸</strong>
+              <strong>Бесплатно</strong>
             </div>
-            <p className="pricing-period">Стоимость для тестировщиков на 1 год</p>
+            <p className="pricing-period">
+              После окончания тестирования — 100 000 ₸ на 1 год вместо
+              стандартных 200 000 ₸.
+            </p>
             <ul className="pricing-features">
               <li>Полный доступ к CRM</li>
               <li>Заказы, производство, склад и финансы</li>
